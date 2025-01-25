@@ -28,11 +28,11 @@ phases:
       - echo Writing image definitions file...
       - printf '{"ImageURI":"%s"}' $ECR_REPOSITORY_URL:$IMAGE_TAG > imageDetail.json
       - echo Rewriting task definitions file...
-      - sed -i -e "s#<project>#$project#g" module/codebuild/task_definition.json
-      - sed -i -e "s#<env>#$env#g" module/codebuild/task_definition.json
-      - sed -i -e "s#<task_role>#$task_role#g" module/codebuild/task_definition.json
-      - sed -i -e "s#<execution_role_arn>#$execution_role_arn#g" module/codebuild/task_definition.json
-      - cp module/codebuild/task_definition.json ./
+      - sed -i -e "s#<project>#$project#g" module/codebuild/taskdef.json
+      - sed -i -e "s#<env>#$env#g" module/codebuild/taskdef.json
+      - sed -i -e "s#<task_role>#$task_role#g" module/codebuild/taskdef.json
+      - sed -i -e "s#<execution_role_arn>#$execution_role_arn#g" module/codebuild/taskdef.json
+      - cp module/codebuild/taskdef.json ./
       - echo Finished Rewriting task definitions file
       - echo Rewriting appspec file...
       - sed -i -e "s#<project>#$project#g" module/codebuild/appspec.yml
