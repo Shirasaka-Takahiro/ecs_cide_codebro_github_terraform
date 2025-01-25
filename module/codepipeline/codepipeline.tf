@@ -23,7 +23,6 @@ resource "aws_codepipeline" "pipeline" {
         ConnectionArn        = var.codestarconnections_connection_arn
         FullRepositoryId     = var.full_repositroy_id
         BranchName           = var.branch_name
-        OutputArtifactFormat = "CODEBUILD_CLONE_REF"
       }
     }
   }
@@ -62,10 +61,10 @@ resource "aws_codepipeline" "pipeline" {
         ApplicationName                = var.codedeploy_app_name
         DeploymentGroupName            = var.codedeploy_deployment_group_name
         TaskDefinitionTemplateArtifact = "build_output"
-        TaskDefinitionTemplatePath     = var.task_definition_template_path
+        TaskDefinitionTemplatePath     = "task_definition.json"
         AppSpecTemplateArtifact        = "build_output"
-        AppSpecTemplatePath            = var.app_spec_template_path
-        Image1ArtifactName             = "BuildArtifact"
+        AppSpecTemplatePath            = "appspec.yml"
+        Image1ArtifactName             = "build_output"
         Image1ContainerName            = "IMAGE1_NAME"
       }
     }
