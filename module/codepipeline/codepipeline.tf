@@ -61,7 +61,7 @@ resource "aws_codepipeline" "pipeline" {
         ApplicationName                = var.codedeploy_app_name
         DeploymentGroupName            = var.codedeploy_deployment_group_name
         TaskDefinitionTemplateArtifact = "build_output"
-        TaskDefinitionTemplatePath     = "task_definition.json"
+        TaskDefinitionTemplatePath     = "taskdef.json"
         AppSpecTemplateArtifact        = "build_output"
         AppSpecTemplatePath            = "appspec.yml"
         Image1ArtifactName             = "build_output"
