@@ -20,9 +20,9 @@ resource "aws_codepipeline" "pipeline" {
       output_artifacts = ["source_output"]
 
       configuration = {
-        ConnectionArn        = var.codestarconnections_connection_arn
-        FullRepositoryId     = var.full_repositroy_id
-        BranchName           = var.branch_name
+        ConnectionArn    = var.codestarconnections_connection_arn
+        FullRepositoryId = var.full_repositroy_id
+        BranchName       = var.branch_name
       }
     }
   }
