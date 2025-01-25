@@ -43,16 +43,6 @@
             "Resource": "*"
         },
         {
-            "Sid": "CodeCommitPolicy",
-            "Effect": "Allow",
-            "Action": [
-              "codecommit:GitPull"
-            ],
-            "Resource": [
-              "*"
-            ]
-          },
-        {
             "Effect": "Allow",
             "Action": [
                 "ec2:CreateNetworkInterface",
@@ -64,6 +54,11 @@
                 "ec2:DescribeVpcs",
                 "ec2:CreateNetworkInterfacePermission"
             ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "codestar-connections:UseConnection",
             "Resource": "*"
         }
     ]
