@@ -6,7 +6,7 @@ phases:
       # 環境変数の設定
       - AWS_ACCOUNT_ID=${AWS_ACCOUNT_ID}
       - REGION=${REGION}
-      - ECR_REPOSITORY_URI=${ECR_REPOSITORY_URL}
+      - ECR_REPOSITORY_URL=${ECR_REPOSITORY_URL}
       # コミットハッシュの先頭7桁をタグに利用する
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
@@ -26,7 +26,7 @@ phases:
       - docker push $ECR_REPOSITORY_URL:latest
       - docker push $ECR_REPOSITORY_URL:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"httpd","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
+      - printf '[{"name":"httpd","imageUri":"%s"}]' $ECR_REPOSITORY_URL:$IMAGE_TAG > imageDetail.json
       - echo Rewriting task definitions file...
       - sed -i -e "s#<project>#$project#" module/codebuild/task_definition.json
       - sed -i -e "s#<env>#$env#" module/codebuild/task_definition.json
