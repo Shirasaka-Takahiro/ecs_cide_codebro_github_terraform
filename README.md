@@ -32,3 +32,5 @@ CloudWatch
 2. terraform init
 3. terraform plan
 4. terraform apply
+5. Connect Codepipeline to GitHub on AWS console
+6. Re-deploy Codepipeline
