@@ -27,6 +27,7 @@ resource "aws_ecs_task_definition" "task" {
   requires_compatibilities = [
     "FARGATE"
   ]
+
 }
 
 ##Service
