@@ -15,7 +15,7 @@
                 "logDriver": "awslogs",
                 "options": {
                   "awslogs-region": "ap-northeast-1",
-                  "awslogs-stream-prefix": "/ecs/<project>/<env>/<task_role>",
+                  "awslogs-stream-prefix": "<task_role>",
                   "awslogs-group": "/ecs/<project>/<env>/<task_role>"
                 }
             },
