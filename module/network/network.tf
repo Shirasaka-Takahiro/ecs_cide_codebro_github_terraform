@@ -118,7 +118,7 @@ resource "aws_route_table_association" "private_route_associations" {
 
 ##Elastic IP for Nat Gateway
 resource "aws_eip" "eip_nat_gateway" {
-  domain   = "vpc"
+  domain = "vpc"
   tags = {
     Name = "${var.general_config["project"]}-${var.general_config["env"]}-eip"
   }

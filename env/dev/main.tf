@@ -103,6 +103,13 @@ module "s3_pipeline_bucket" {
   bucket_role    = "pipeline"
 }
 
+module "s3_logging_bucket" {
+  source = "../../module/s3"
+
+  general_config = var.general_config
+  bucket_role    = "logging"
+}
+
 ##DNS
 module "domain" {
   source = "../../module/route53"
@@ -151,8 +158,11 @@ module "ecr" {
 module "cloudwatch" {
   source = "../../module/cloudwatch"
 
-  general_config = var.general_config
-  task_role      = var.task_role
+  general_config       = var.general_config
+  task_role            = var.task_role
+  filter_pattern       = var.filter_pattern
+  destination_arn      = module.kinesis_firehose.kinesis_firehose_arn
+  kinesis_firehose_arn = module.kinesis_firehose.kinesis_firehose_arn
 }
 
 ##CodeStarConnections
@@ -206,6 +216,18 @@ module "codepipeline" {
   codedeploy_deployment_group_name   = module.codedeploy.codedeploy_deployment_group_name
   task_definition_template_path      = file("../../module/codebuild/taskdef.json")
   app_spec_template_path             = file("../../module/codebuild/appspec.yml")
+}
+
+##Kinesis Firehose
+module "kinesis_firehose" {
+  source = "../../module/kinesis"
+
+  general_config     = var.general_config
+  destination        = var.destination
+  bucket_arn         = module.s3_logging_bucket.bucket_arn
+  buffering_size     = var.buffering_size
+  buffering_interval = var.buffering_interval
+  prefix             = var.prefix
 }
 
 ##IAM

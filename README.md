@@ -24,7 +24,11 @@ CodeDeploy
 <br />
 CodePipeline
 <br />
-CloudWatch
+CloudWatch(Subscription filter)
+<br />
+Kinesis Data Firehose
+<br />
+S3(Buckets for logging and pipeline)
 <br />
 
 ■Deploy

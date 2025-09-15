@@ -3,7 +3,7 @@ resource "aws_codepipeline" "pipeline" {
   name     = "${var.general_config["project"]}-${var.general_config["env"]}-pipeline"
   role_arn = var.iam_codepipeline_arn
 
-  pipeline_type = "V1"
+  pipeline_type = "V2"
 
   artifact_store {
     location = var.bucket_name

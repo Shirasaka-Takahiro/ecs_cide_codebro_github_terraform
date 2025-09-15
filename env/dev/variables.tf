@@ -143,6 +143,13 @@ variable "ecr_repository_role" {
   default     = "web"
 }
 
+##CloudWatch Logs
+variable "filter_pattern" {
+  description = "Filter pattern for cloudwatch logs"
+  type        = string
+  default     = ""
+}
+
 ##Docker Image Name
 variable "docker_image_name" {
   description = "Docker Image name"
@@ -242,4 +249,29 @@ variable "policy_name_4" {
   description = "Codepipeline IAM policy name"
   type        = string
   default     = "pipeline-policy"
+}
+
+##Kinesis
+variable "destination" {
+  description = "Destination for Kinesis"
+  type        = string
+  default     = "extended_s3"
+}
+
+variable "buffering_size" {
+  description = "Buffering Size for Kinesis"
+  type        = number
+  default     = 5
+}
+
+variable "buffering_interval" {
+  description = "Buffering Interval for Kinesis"
+  type        = number
+  default     = 300
+}
+
+variable "prefix" {
+  description = "Prefix for Kinesis"
+  type        = string
+  default     = "KINESIS_LOGGING"
 }
