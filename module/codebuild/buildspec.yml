@@ -29,12 +29,11 @@ phases:
       - printf '{"ImageURI":"%s"}' $ECR_REPOSITORY_URL:$IMAGE_TAG > imageDetail.json
       - |
         if [ $AWS_ACCOUNT_ID = "482122962623" ] ; then
-          echo "Account ID is 482122962623" 
+          sed -i -e "s#<project>#$project#g" module/codebuild/taskdef.json
         else
           echo "Account ID is incorrect"
           fi
       - echo Rewriting task definitions file...
-      - sed -i -e "s#<project>#$project#g" module/codebuild/taskdef.json
       - sed -i -e "s#<env>#$env#g" module/codebuild/taskdef.json
       - sed -i -e "s#<task_role>#$task_role#g" module/codebuild/taskdef.json
       - sed -i -e "s#<execution_role_arn>#$execution_role_arn#g" module/codebuild/taskdef.json

@@ -160,9 +160,6 @@ module "cloudwatch" {
 
   general_config       = var.general_config
   task_role            = var.task_role
-  #filter_pattern       = var.filter_pattern
-  #destination_arn      = module.kinesis_firehose.kinesis_firehose_arn
-  #kinesis_firehose_arn = module.kinesis_firehose.kinesis_firehose_arn
 }
 
 ##CodeStarConnections
@@ -217,20 +214,6 @@ module "codepipeline" {
   task_definition_template_path      = file("../../module/codebuild/taskdef.json")
   app_spec_template_path             = file("../../module/codebuild/appspec.yml")
 }
-
-/*
-##Kinesis Firehose
-module "kinesis_firehose" {
-  source = "../../module/kinesis"
-
-  general_config     = var.general_config
-  destination        = var.destination
-  bucket_arn         = module.s3_logging_bucket.bucket_arn
-  buffering_size     = var.buffering_size
-  buffering_interval = var.buffering_interval
-  prefix             = var.prefix
-}
-*/
 
 ##IAM
 module "iam_ecs" {
