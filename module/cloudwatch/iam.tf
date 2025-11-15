@@ -1,3 +1,4 @@
+/*
 data "aws_region" "current" {}
 data "aws_caller_identity" "current" {}
 
@@ -34,3 +35,4 @@ resource "aws_iam_policy" "kinesis_cloudwatchlogs_policy" {
     }
   )
 }
+*/

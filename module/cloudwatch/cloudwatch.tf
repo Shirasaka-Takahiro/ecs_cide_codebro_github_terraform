@@ -4,6 +4,7 @@ resource "aws_cloudwatch_log_group" "deafult" {
   retention_in_days = 30
 }
 
+/*
 ##Cloudwatch Log Subscription Filter
 resource "aws_cloudwatch_log_subscription_filter" "default" {
   name            = "${var.general_config["project"]}-${var.general_config["env"]}-logging-subscription-filter"
@@ -12,3 +13,4 @@ resource "aws_cloudwatch_log_subscription_filter" "default" {
   filter_pattern  = var.filter_pattern
   destination_arn = var.destination_arn
 }
+*/
