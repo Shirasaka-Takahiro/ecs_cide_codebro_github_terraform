@@ -27,7 +27,12 @@ phases:
       - docker push $ECR_REPOSITORY_URL:$IMAGE_TAG
       - echo Writing image definitions file...
       - printf '{"ImageURI":"%s"}' $ECR_REPOSITORY_URL:$IMAGE_TAG > imageDetail.json
-      - if [ $AWS_ACCOUNT_ID = "482122962623" ] ; then echo "Account ID is 482122962623" else echo "Account ID is incorrect" fi
+      - |
+        if [ $AWS_ACCOUNT_ID = "482122962623" ] ; then
+          echo "Account ID is 482122962623" 
+        else
+          echo "Account ID is incorrect"
+          fi
       - echo Rewriting task definitions file...
       - sed -i -e "s#<project>#$project#g" module/codebuild/taskdef.json
       - sed -i -e "s#<env>#$env#g" module/codebuild/taskdef.json
